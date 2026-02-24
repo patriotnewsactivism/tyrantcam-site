@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from './lib/supabase'
-import type { Tyrant, TyrantCategory, Vote } from './types/database'
+import type { Tyrant, TyrantCategory } from './types/database'
 import SubmissionForm from './components/SubmissionForm'
 
 type Route = 'home' | 'submit' | 'admin'
@@ -251,7 +251,7 @@ function App() {
         .eq('ip_hash', ipHash)
       
       if (votes) {
-        const votedIds = new Set(votes.map((v: Vote) => v.tyrant_id))
+        const votedIds = new Set(votes.map((v) => v.tyrant_id))
         setVotedTyrants(votedIds)
       }
     } catch {

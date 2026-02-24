@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
-import type { SubmissionInsert } from '../lib/database.types'
+import type { TablesInsert } from '../lib/database.types'
 import { Upload, AlertTriangle, CheckCircle, Eye, EyeOff, FileText, X } from 'lucide-react'
 
 type Category = 'Federal' | 'State' | 'Local' | 'Law Enforcement'
@@ -223,7 +223,7 @@ export default function SubmissionForm() {
         evidenceUrl = await uploadFile(selectedFile)
       }
 
-      const submission: SubmissionInsert = {
+      const submission: TablesInsert<'submissions'> = {
         tyrant_name: formData.tyrant_name.trim(),
         title_position: formData.title_position.trim(),
         category: formData.category as Category,
